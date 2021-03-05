@@ -84,7 +84,9 @@ https://docs.huihoo.com/automotivelinux/docs/getting_started/en/dev/reference/ma
 ```bash
 > source meta-agl/scripts/aglsetup.sh -f -m qemux86-64 agl-demo agl-devel
 > bitbake agl-demo-platform
-
+...
+> cd tmp/deploy/images/qemux86-64
+> xz -d agl-demo-platform-qemux86-64.vmdk.xz
 ```
 
 - Build RasPi3 image
@@ -92,8 +94,10 @@ https://docs.huihoo.com/automotivelinux/docs/getting_started/en/dev/reference/ma
 https://docs.huihoo.com/automotivelinux/docs/getting_started/en/dev/reference/machines/raspberrypi.html
 
 ```bash
-source meta-agl/scripts/aglsetup.sh -m raspberrypi3 agl-demo agl-netboot agl-appfw-smack
-bitbake agl-demo-platform
+> source meta-agl/scripts/aglsetup.sh -m raspberrypi3 agl-demo agl-netboot agl-appfw-smack
+> bitbake agl-demo-platform
+...
+> ls tmp/deploy/images/raspberrypi3/agl-demo-platform-raspberrypi3.rpi-sdimg
 ```
 
 then, see [how to flash the image](https://docs.huihoo.com/automotivelinux/docs/getting_started/en/dev/reference/machines/raspberrypi.html#booting-agl-demo-platform-on-raspberry-pi) to RasPi3 target board.
