@@ -77,17 +77,27 @@ the following procedure is required to run the container environment, not on the
 > source meta-agl/scripts/aglsetup.sh -h
 ```
 
-- Build QEMU image
+- Build & Run QEMU image
 
 https://docs.huihoo.com/automotivelinux/docs/getting_started/en/dev/reference/machines/qemu.html
 
 ```bash
+# Build image for QEMU
 > source meta-agl/scripts/aglsetup.sh -f -m qemux86-64 agl-demo agl-devel
 > bitbake agl-demo-platform
 ...
 > cd tmp/deploy/images/qemux86-64
 > xz -d agl-demo-platform-qemux86-64.vmdk.xz
+
+# Run image on QEMU
+> qemu-system-x86_64 -enable-kvm -m 2048 -hda agl-demo-platform-qemux86-64.vmdk -cpu kvm64 -cpu qemu64,+ssse3,+sse4.1,+sse4.2,+popcnt -vga std -show-cursor -device virtio-rng-pci -serial mon:stdio -serial null -soundhw hda -net user,hostfwd=tcp::2222-:22
 ```
+
+choose Graphic boot and then you can see the dashboard.
+
+<img src="./images/agl_qemu-system-x86_64_home.png" width="300">
+
+<img src="./images/agl_qemu-system-x86_64_dashboard.png" width="300">
 
 - Build RasPi3 image
 
