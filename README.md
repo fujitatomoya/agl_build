@@ -64,7 +64,7 @@ AGL source code will be fetched on host system(confirmed with Ubuntu18.04/20.04)
 
 - Start Container
 
-```
+```bash
 > cd $AGL_TOP
 > docker run -it -u $(id -u):$(id -g) -v $(pwd):$(pwd) -w $(pwd) agl:dev /bin/bash
 ```
